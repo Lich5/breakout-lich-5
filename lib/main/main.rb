@@ -122,7 +122,7 @@ reconnect_if_wanted = proc {
 
   ## GUI starts here
 
-  elsif defined?(Gtk) and (ARGV.empty? or @argv_options[:gui])
+  elsif (Gtk) and (ARGV.empty? or @argv_options[:gui])
     gui_login
   end
 
@@ -137,7 +137,7 @@ reconnect_if_wanted = proc {
 
   Socket.do_not_reverse_lookup = true
 
-  if defined? @argv_options[:sal]
+  if @argv_options[:sal]
     begin
       @launch_data = File.open(@argv_options[:sal]) { |sal_file| sal_file.readlines }.collect { |line| line.chomp }
     rescue
